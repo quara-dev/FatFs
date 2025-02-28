@@ -1,63 +1,94 @@
-option('use_stl', description: 'Compiling for STL', type: 'boolean', value: true)
-option('FS_FATFS_READ_ONLY', type: 'boolean', value: false, 
-       description: 'Enable read-only mode for FAT filesystem')
+# Function Configurations
+option('FATFS_FS_READONLY', type: 'boolean', value: false, 
+       description: 'Read-only configuration that removes writing API functions')
 
-option('FS_FATFS_MKFS', type: 'boolean', value: true,
-       description: 'Enable FAT filesystem creation capability')
+option('FATFS_FS_MINIMIZE', type: 'integer', value: 0, choices: [0, 1, 2, 3],
+       description: 'Minimization level to remove some basic API functions')
 
-option('FS_FATFS_MOUNT_MKFS', type: 'boolean', value: false,
-       description: 'Create FAT filesystem during mount if none exists')
+option('FATFS_USE_FIND', type: 'integer', value: 0, choices: [0, 1, 2],
+       description: 'Enables filtered directory read functions')
 
-option('FS_FATFS_MAX_ROOT_ENTRIES', type: 'integer', value: 512, min: 1, max: 32768,
-       description: 'Maximum number of entries in FAT FS root directory')
+option('FATFS_USE_MKFS', type: 'boolean', value: false,
+       description: 'Enables f_mkfs() function')
 
-option('FS_FATFS_EXFAT', type: 'boolean', value: false,
-       description: 'Enable ExFAT support')
+option('FATFS_USE_FASTSEEK', type: 'boolean', value: false,
+       description: 'Enables fast seek feature')
 
-option('FS_FATFS_NUM_FILES', type: 'integer', value: 4,
-       description: 'Maximum number of opened files')
+option('FATFS_USE_EXPAND', type: 'boolean', value: false,
+       description: 'Enables f_expand() function')
 
-option('FS_FATFS_NUM_DIRS', type: 'integer', value: 4,
-       description: 'Maximum number of opened directories')
+option('FATFS_USE_CHMOD', type: 'boolean', value: false,
+       description: 'Enables attribute control API functions')
 
-option('FS_FATFS_HAS_RTC', type: 'boolean', value: false,
-       description: 'Enable file system timestamping support')
+option('FATFS_USE_LABEL', type: 'boolean', value: false,
+       description: 'Enables volume label API functions')
 
-option('FS_FATFS_EXTRA_NATIVE_API', type: 'boolean', value: false,
-       description: 'Enable additional native API functions')
+option('FATFS_USE_FORWARD', type: 'boolean', value: false,
+       description: 'Enables f_forward() function')
 
-option('FS_FATFS_LFN', type: 'boolean', value: false,
-       description: 'Enable long filename (LFN) support')
+option('FATFS_USE_STRFUNC', type: 'integer', value: 0, choices: [0, 1, 2],
+       description: 'Enables string functions')
 
-option('FS_FATFS_LFN_MODE', type: 'combo', choices: ['bss', 'stack', 'heap'], value: 'stack',
-       description: 'LFN memory mode')
+option('FATFS_PRINT_LLI', type: 'boolean', value: false,
+       description: 'Enables long long argument support in f_printf()')
 
-option('FS_FATFS_MAX_LFN', type: 'integer', value: 255, min: 12, max: 255,
-       description: 'Maximum filename length for LFN')
+option('FATFS_PRINT_FLOAT', type: 'boolean', value: false,
+       description: 'Enables floating point argument support in f_printf()')
 
-option('FS_FATFS_CODEPAGE', type: 'integer', value: 437,
-       description: 'FatFS code page (character set)')
+option('FATFS_STRF_ENCODE', type: 'integer', value: 3, choices: [0, 1, 2, 3],
+       description: 'Character encoding for string functions')
 
-option('FS_FATFS_MAX_SS', type: 'integer', value: 512, min: 512, max: 4096,
-       description: 'Maximum supported sector size')
+# Locale and Namespace Configurations
+option('FATFS_CODE_PAGE', type: 'integer', value: 932,
+       description: 'OEM code page to be used on the target system')
 
-option('FS_FATFS_MIN_SS', type: 'integer', value: 512, min: 512, max: 4096,
-       description: 'Minimum expected sector size')
+option('FATFS_USE_LFN', type: 'integer', value: 0, choices: [0, 1, 2, 3],
+       description: 'Enables Long File Name support')
 
-option('FS_FATFS_WINDOW_ALIGNMENT', type: 'integer', value: 1,
-       description: 'Memory alignment for the member "win" in FATFS')
+option('FATFS_LFN_UNICODE', type: 'integer', value: 0, choices: [0, 1, 2, 3],
+       description: 'Character encoding on the API when LFN is enabled')
 
-option('FS_FATFS_REENTRANT', type: 'boolean', value: false,
-       description: 'Enable FatFs re-entrancy (thread safe) option')
+option('FATFS_FS_RPATH', type: 'integer', value: 0, choices: [0, 1, 2],
+       description: 'Configures support for relative path')
 
-option('FS_FATFS_LBA64', type: 'boolean', value: false,
-       description: 'Support for 64-bit LBA and GPT')
+# Drive/Volume Configurations
+option('FATFS_VOLUMES', type: 'integer', value: 1, min: 1, max: 10,
+       description: 'Number of volumes (logical drives) to be used')
 
-option('FS_FATFS_MULTI_PARTITION', type: 'boolean', value: false,
-       description: 'Support for multiple volumes on the physical drive')
+option('FATFS_STR_VOLUME_ID', type: 'boolean', value: false,
+       description: 'Enables volume ID in arbitrary strings')
 
-option('FS_FATFS_CUSTOM_MOUNT_POINT_COUNT', type: 'integer', value: 0, min: 0, max: 10,
-       description: 'Count of custom mount points')
+option('FATFS_MULTI_PARTITION', type: 'boolean', value: false,
+       description: 'Enables support for multiple volumes on the physical drive')
 
-option('FS_FATFS_CUSTOM_MOUNT_POINTS', type: 'string', value: '',
-       description: 'Comma-separated list of custom mount points (e.g. "RAM,SD,SD2,NAND")')
+option('FATFS_MIN_SS', type: 'integer', value: 512, choices: [512, 1024, 2048, 4096],
+       description: 'Minimum sector size to be supported')
+
+option('FATFS_MAX_SS', type: 'integer', value: 512, choices: [512, 1024, 2048, 4096],
+       description: 'Maximum sector size to be supported')
+
+
+option('FATFS_USE_TRIM', type: 'boolean', value: false,
+       description: 'Enables support for ATA-TRIM')
+
+# System Configurations
+option('FATFS_FS_TINY', type: 'boolean', value: false,
+       description: 'Enables tiny buffer configuration')
+
+option('FATFS_FS_EXFAT', type: 'boolean', value: false,
+       description: 'Enables support for exFAT filesystem')
+
+option('FATFS_FS_NORTC', type: 'boolean', value: false,
+       description: 'Disables timestamp feature if system has no RTC')
+
+option('FATFS_FS_NOFSINFO', type: 'integer', value: 0, choices: [0, 1, 2, 3],
+       description: 'Controls use of FSINFO on FAT32 volumes')
+
+option('FATFS_FS_LOCK', type: 'integer', value: 0, min: 0,
+       description: 'Enables file lock function to control duplicated file open')
+
+option('FATFS_FS_REENTRANT', type: 'boolean', value: false,
+       description: 'Enables re-entrancy (thread safety) of the FatFs module')
+
+option('FATFS_FS_TIMEOUT', type: 'integer', value: 1000,
+       description: 'Timeout period for file operations in OS time ticks')
