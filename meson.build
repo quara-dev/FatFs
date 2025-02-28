@@ -1,4 +1,4 @@
-project('fatfs', 'c', version: 'v0.15.1')
+project('fatfs', 'c', version: 'v0.15.1', meson_version: '>=1.3.0', default_options: ['buildtype=release'])
 
 common_cflags = [
     '-Wno-conversion',

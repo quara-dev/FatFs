@@ -2,10 +2,10 @@
 option('FATFS_FS_READONLY', type: 'boolean', value: false, 
        description: 'Read-only configuration that removes writing API functions')
 
-option('FATFS_FS_MINIMIZE', type: 'integer', value: 0, choices: [0, 1, 2, 3],
+option('FATFS_FS_MINIMIZE', type: 'integer', value: 0, min: 0, max: 3,
        description: 'Minimization level to remove some basic API functions')
 
-option('FATFS_USE_FIND', type: 'integer', value: 0, choices: [0, 1, 2],
+option('FATFS_USE_FIND', type: 'integer', value: 0, min: 0, max: 2,
        description: 'Enables filtered directory read functions')
 
 option('FATFS_USE_MKFS', type: 'boolean', value: false,
@@ -26,7 +26,7 @@ option('FATFS_USE_LABEL', type: 'boolean', value: false,
 option('FATFS_USE_FORWARD', type: 'boolean', value: false,
        description: 'Enables f_forward() function')
 
-option('FATFS_USE_STRFUNC', type: 'integer', value: 0, choices: [0, 1, 2],
+option('FATFS_USE_STRFUNC', type: 'integer', value: 0, min: 0, max: 2,
        description: 'Enables string functions')
 
 option('FATFS_PRINT_LLI', type: 'boolean', value: false,
@@ -35,20 +35,20 @@ option('FATFS_PRINT_LLI', type: 'boolean', value: false,
 option('FATFS_PRINT_FLOAT', type: 'boolean', value: false,
        description: 'Enables floating point argument support in f_printf()')
 
-option('FATFS_STRF_ENCODE', type: 'integer', value: 3, choices: [0, 1, 2, 3],
+option('FATFS_STRF_ENCODE', type: 'integer', value: 3, min: 0, max: 3,
        description: 'Character encoding for string functions')
 
 # Locale and Namespace Configurations
 option('FATFS_CODE_PAGE', type: 'integer', value: 932,
        description: 'OEM code page to be used on the target system')
 
-option('FATFS_USE_LFN', type: 'integer', value: 0, choices: [0, 1, 2, 3],
+option('FATFS_USE_LFN', type: 'integer', value: 0, min: 0, max: 3,
        description: 'Enables Long File Name support')
 
-option('FATFS_LFN_UNICODE', type: 'integer', value: 0, choices: [0, 1, 2, 3],
+option('FATFS_LFN_UNICODE', type: 'integer', value: 0, min: 0, max: 3,
        description: 'Character encoding on the API when LFN is enabled')
 
-option('FATFS_FS_RPATH', type: 'integer', value: 0, choices: [0, 1, 2],
+option('FATFS_FS_RPATH', type: 'integer', value: 0, min: 0, max: 2,
        description: 'Configures support for relative path')
 
 # Drive/Volume Configurations
@@ -61,12 +61,11 @@ option('FATFS_STR_VOLUME_ID', type: 'boolean', value: false,
 option('FATFS_MULTI_PARTITION', type: 'boolean', value: false,
        description: 'Enables support for multiple volumes on the physical drive')
 
-option('FATFS_MIN_SS', type: 'integer', value: 512, choices: [512, 1024, 2048, 4096],
+option('FATFS_MIN_SS', type: 'integer', value: 512,
        description: 'Minimum sector size to be supported')
 
-option('FATFS_MAX_SS', type: 'integer', value: 512, choices: [512, 1024, 2048, 4096],
+option('FATFS_MAX_SS', type: 'integer', value: 512,
        description: 'Maximum sector size to be supported')
-
 
 option('FATFS_USE_TRIM', type: 'boolean', value: false,
        description: 'Enables support for ATA-TRIM')
@@ -81,7 +80,7 @@ option('FATFS_FS_EXFAT', type: 'boolean', value: false,
 option('FATFS_FS_NORTC', type: 'boolean', value: false,
        description: 'Disables timestamp feature if system has no RTC')
 
-option('FATFS_FS_NOFSINFO', type: 'integer', value: 0, choices: [0, 1, 2, 3],
+option('FATFS_FS_NOFSINFO', type: 'integer', value: 0, min: 0, max: 3,
        description: 'Controls use of FSINFO on FAT32 volumes')
 
 option('FATFS_FS_LOCK', type: 'integer', value: 0, min: 0,
