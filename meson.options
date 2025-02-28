@@ -1,0 +1,63 @@
+option('use_stl', description: 'Compiling for STL', type: 'boolean', value: true)
+option('FS_FATFS_READ_ONLY', type: 'boolean', value: false, 
+       description: 'Enable read-only mode for FAT filesystem')
+
+option('FS_FATFS_MKFS', type: 'boolean', value: true,
+       description: 'Enable FAT filesystem creation capability')
+
+option('FS_FATFS_MOUNT_MKFS', type: 'boolean', value: false,
+       description: 'Create FAT filesystem during mount if none exists')
+
+option('FS_FATFS_MAX_ROOT_ENTRIES', type: 'integer', value: 512, min: 1, max: 32768,
+       description: 'Maximum number of entries in FAT FS root directory')
+
+option('FS_FATFS_EXFAT', type: 'boolean', value: false,
+       description: 'Enable ExFAT support')
+
+option('FS_FATFS_NUM_FILES', type: 'integer', value: 4,
+       description: 'Maximum number of opened files')
+
+option('FS_FATFS_NUM_DIRS', type: 'integer', value: 4,
+       description: 'Maximum number of opened directories')
+
+option('FS_FATFS_HAS_RTC', type: 'boolean', value: false,
+       description: 'Enable file system timestamping support')
+
+option('FS_FATFS_EXTRA_NATIVE_API', type: 'boolean', value: false,
+       description: 'Enable additional native API functions')
+
+option('FS_FATFS_LFN', type: 'boolean', value: false,
+       description: 'Enable long filename (LFN) support')
+
+option('FS_FATFS_LFN_MODE', type: 'combo', choices: ['bss', 'stack', 'heap'], value: 'stack',
+       description: 'LFN memory mode')
+
+option('FS_FATFS_MAX_LFN', type: 'integer', value: 255, min: 12, max: 255,
+       description: 'Maximum filename length for LFN')
+
+option('FS_FATFS_CODEPAGE', type: 'integer', value: 437,
+       description: 'FatFS code page (character set)')
+
+option('FS_FATFS_MAX_SS', type: 'integer', value: 512, min: 512, max: 4096,
+       description: 'Maximum supported sector size')
+
+option('FS_FATFS_MIN_SS', type: 'integer', value: 512, min: 512, max: 4096,
+       description: 'Minimum expected sector size')
+
+option('FS_FATFS_WINDOW_ALIGNMENT', type: 'integer', value: 1,
+       description: 'Memory alignment for the member "win" in FATFS')
+
+option('FS_FATFS_REENTRANT', type: 'boolean', value: false,
+       description: 'Enable FatFs re-entrancy (thread safe) option')
+
+option('FS_FATFS_LBA64', type: 'boolean', value: false,
+       description: 'Support for 64-bit LBA and GPT')
+
+option('FS_FATFS_MULTI_PARTITION', type: 'boolean', value: false,
+       description: 'Support for multiple volumes on the physical drive')
+
+option('FS_FATFS_CUSTOM_MOUNT_POINT_COUNT', type: 'integer', value: 0, min: 0, max: 10,
+       description: 'Count of custom mount points')
+
+option('FS_FATFS_CUSTOM_MOUNT_POINTS', type: 'string', value: '',
+       description: 'Comma-separated list of custom mount points (e.g. "RAM,SD,SD2,NAND")')
