@@ -25,7 +25,7 @@ if get_option('FATFS_FS_READONLY')
 else
     ffconfig.set('FATFS_FF_FS_READONLY', 0)
 endif
-ffconfig.set('FATFS_FF_FS_READONLY', get_option('FATFS_FS_READONLY'))
+
 ffconfig.set('FATFS_FF_FS_MINIMIZE', get_option('FATFS_FS_MINIMIZE'))
 ffconfig.set('FATFS_FF_USE_FIND', get_option('FATFS_USE_FIND'))
 
@@ -167,11 +167,8 @@ configure_file(
 
 
 fatfs_inc = include_directories(
-        'include',
-)
-
-fatfs_config = include_directories(
-        'config',
+    '.',
+    'include',
 )
 
 fatfs_src = files(
