@@ -1,4 +1,4 @@
-project('fatfs', 'c', version: 'v0.15')
+project('fatfs', 'c', version: 'v0.15.1')
 
 common_cflags = [
     '-Wno-conversion',
@@ -10,8 +10,11 @@ common_cflags = [
 ]
 
 fatfs_inc = include_directories(
+        'include',
+)
+
+fatfs_config = include_directories(
         'config',
-        'source',
 )
 
 fatfs_src = files(
@@ -32,22 +35,24 @@ fatfs_lib = static_library(
     sources: [fatfs_src],
     include_directories: [
         fatfs_inc,
+        fatfs_config,
     ],
     c_args: common_cflags,
     native: false,
 )
 
-fatfs_native_lib = static_library(
-    'fatfs_native',
-    sources: [fatfs_src],
-    include_directories: [
-        fatfs_inc,
-    ],
-    c_args: [common_cflags,
-    '-DFF_MULTI_PARTITION=0',  # Disable multi-partition support
-    ],
-    native: true,
-)
+# fatfs_native_lib = static_library(
+#     'fatfs_native',
+#     sources: [fatfs_src],
+#     include_directories: [
+#         fatfs_inc,
+#         fatfs_config,
+#     ],
+#     c_args: [common_cflags,
+#     '-DFF_MULTI_PARTITION=0',  # Disable multi-partition support
+#     ],
+#     native: true,
+# )
 
 fatfs_dep = declare_dependency(
     # sources: fatfs_rtos_src,
