@@ -55,7 +55,7 @@ option('FATFS_FS_RPATH', type: 'integer', value: 0, min: 0, max: 2,
 option('FATFS_VOLUMES', type: 'integer', value: 1, min: 1, max: 10,
        description: 'Number of volumes (logical drives) to be used')
 
-option('FATFS_STR_VOLUME_ID', type: 'boolean', value: false,
+option('FATFS_STR_VOLUME_ID', type: 'integer', value: 0, min: 0, max: 10,
        description: 'Enables volume ID in arbitrary strings')
 
 option('FATFS_MULTI_PARTITION', type: 'boolean', value: false,
