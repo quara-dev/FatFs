@@ -186,7 +186,6 @@ fatfs_lib = static_library(
     ],
     c_args: [
         common_cflags,
-        '-DFFCONF_DEF=5380',  # Default configuration
     ],
     native: false,
 )
