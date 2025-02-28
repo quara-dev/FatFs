@@ -30,7 +30,10 @@ fatfs_lib = static_library(
         fatfs_inc,
         fatfs_config,
     ],
-    c_args: common_cflags,
+    c_args: [
+        common_cflags,
+        '-DFFCONF_DEF=5380',  # Default configuration
+    ],
     native: false,
 )
 
