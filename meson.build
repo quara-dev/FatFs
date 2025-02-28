@@ -22,13 +22,6 @@ fatfs_src = files(
     'source/ffunicode.c',
 )
 
-fatfs_rtos_src = files(
-    'source/ffsystem_rtos.c',
-)
-
-fatfs_native_src = files(
-    'source/ffsystem_linux.c',
-)
 
 fatfs_lib = static_library(
     'fatfs',
