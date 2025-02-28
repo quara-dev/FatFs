@@ -98,7 +98,7 @@ ffconfig.set('FATFS_FF_FS_RPATH', get_option('FATFS_FS_RPATH'))
 # Drive/Volume Configurations
 ffconfig.set('FATFS_FF_VOLUMES', get_option('FATFS_VOLUMES'))
 
-ffconfig.set('FF_STR_VOLUME_ID', get_option('FATFS_STR_VOLUME_ID'))
+ffconfig.set('FATFS_FF_STR_VOLUME_ID', get_option('FATFS_STR_VOLUME_ID'))
 
 if get_option('FATFS_MULTI_PARTITION')
     message('FATFS_MULTI_PARTITION')
