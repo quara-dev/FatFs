@@ -182,7 +182,6 @@ fatfs_lib = static_library(
     sources: [fatfs_src],
     include_directories: [
         fatfs_inc,
-        fatfs_config,
     ],
     c_args: [
         common_cflags,
