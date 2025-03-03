@@ -200,7 +200,7 @@ fatfs_lib = static_library(
 fatfs_dep = declare_dependency(
     # sources: fatfs_rtos_src,
     include_directories: fatfs_inc,
-    link_with: fatfs_lib,
+    link_whole: fatfs_lib,
     compile_args: [common_cflags],
 )
 
