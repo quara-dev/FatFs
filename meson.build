@@ -190,8 +190,8 @@ fatfs_native_lib = static_library(
     include_directories: [
         fatfs_inc,
     ],
-    c_args: [common_cflags,
-    '-DFF_MULTI_PARTITION=0',  # Disable multi-partition support
+    c_args: [
+        common_cflags,
     ],
     native: true,
 )
@@ -206,6 +206,6 @@ fatfs_dep = declare_dependency(
 fatfs_native_dep = declare_dependency(
     # sources: fatfs_native_src,
     include_directories: fatfs_inc,
-    link_with: fatfs_native_lib,
+    link_whole: fatfs_native_lib,
     compile_args: [common_cflags],
 )
