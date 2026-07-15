@@ -16,7 +16,7 @@ message('Configuring FatFs library')
 message(get_option('FATFS_CODE_PAGE'))
 
 # FATFS REV version
-ffconfig.set('FATFS_FFCONF_DEF', '5380')
+ffconfig.set('FATFS_FFCONF_DEF', '80386')
 
 # Function Configurations
 if get_option('FATFS_FS_READONLY')
